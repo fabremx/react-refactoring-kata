@@ -1,0 +1,104 @@
+@import "../../assets/styles/colors.scss";
+
+.cart {
+  width: 100%;
+  margin: 0 15px;
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+
+    th {
+      font-size: 15px;
+    }
+  }
+
+  .body {
+    color: #666666;
+    font-size: 15px;
+    font-family: "Dosis", sans-serif;
+    line-height: 1.80857;
+  }
+
+  .noProducts {
+    padding: 0.75em;
+  }
+
+  td,
+  th {
+    text-align: left;
+    padding: 0.75rem;
+  }
+
+  td {
+    border-bottom: 1px solid #dee2e6;
+
+    .stripped {
+      text-decoration: line-through;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+  }
+  p {
+    margin: 0;
+  }
+
+  .photo {
+    width: 120px;
+    height: 110px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .name span,
+  .photo span {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+
+  .quantity input {
+    border: 2px solid #000000;
+    text-align: center;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+  .remove {
+    text-align: center;
+
+    svg {
+      width: 14px;
+      fill: $text-secondary-lb;
+
+      &:hover {
+        cursor: pointer;
+        fill: $text-secondary-db;
+      }
+    }
+  }
+}

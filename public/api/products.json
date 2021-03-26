@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Sneaker Puma RS-X3",
+      "price": 80.99,
+      "priceAfterDiscount": 70.99,
+      "type": "fashion",
+      "category": "Shoes",
+      "quantity": 1,
+      "stock": 145,
+      "description": "Class aptent taciti sociosqu ad litora torquent per conubia nostra.",
+      "image": "https://i.ibb.co/xYcSffS/867d09dcc622e637719811f163fdc19f.webp",
+      "isNew": true,
+      "isSoonEnding": false
+    },
+    {
+      "id": 2,
+      "title": "Onitsuka Mexico 66",
+      "price": 65.25,
+      "type": "fashion",
+      "category": "Shoes",
+      "quantity": 2,
+      "stock": 24,
+      "description": "Nam sagittis a augue eget scelerisque. Nullam lacinia consectetur.",
+      "image": "https://i.ibb.co/qdQCFBH/4117367-500-A.jpg",
+      "isNew": false,
+      "isSoonEnding": false
+    },
+    {
+      "id": 3,
+      "title": "Richelieu Oxford cuir noir",
+      "price": 120.12,
+      "type": "fashion",
+      "category": "Shoes",
+      "quantity": 1,
+      "stock": 87,
+      "description": "Pellentesque eget lectus sit amet magna rutrum tincidunt id ut nisi.",
+      "image": "https://i.ibb.co/34xZsSg/richelieu-oxford-cuir-noir-1-800x800.jpg",
+      "isNew": false,
+      "isSoonEnding": true
+    }
+  ]
+}
