@@ -1,0 +1,29 @@
+@import "../../assets/styles/colors.scss";
+
+.cart {
+  width: 100%;
+  margin: 0 15px;
+
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+  }
+
+  thead {
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    height: 40px;
+    text-align: left;
+
+    th {
+      font-size: 15px;
+      padding-left: 10px;
+    }
+  }
+}

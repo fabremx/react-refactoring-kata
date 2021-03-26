@@ -6,4 +6,5 @@ export interface Product {
   quantity: number;
   isNew: boolean;
   isSoonEnding: boolean;
+  [key: string]: boolean | number | string | undefined;
 }
