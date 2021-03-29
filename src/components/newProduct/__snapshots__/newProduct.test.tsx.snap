@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewProduct should render correctly the component 1`] = `
+<DocumentFragment>
+  <div>
+    New product
+  </div>
+  Title 
+  <span>
+    (New product)
+  </span>
+</DocumentFragment>
+`;

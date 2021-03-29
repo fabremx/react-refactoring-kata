@@ -1,13 +1,12 @@
 import { ReactElement } from "react";
-import { Product } from "../../models";
 import baseProductStyles from "../baseProduct/baseProduct.module.scss";
 import styles from "./newProduct.module.scss";
 
 interface Props {
-  product: Product;
+  title: string;
 }
 
-export function NewProduct({ product }: Props): ReactElement {
+export function NewProduct({ title }: Props): ReactElement {
   return (
     <>
       <td
@@ -21,7 +20,7 @@ export function NewProduct({ product }: Props): ReactElement {
         className={`${baseProductStyles.name} ${styles.name}`}
         data-testid="titleNewProduct"
       >
-        {product.title} <span>(New product)</span>
+        {title} <span>(New product)</span>
       </td>
     </>
   );

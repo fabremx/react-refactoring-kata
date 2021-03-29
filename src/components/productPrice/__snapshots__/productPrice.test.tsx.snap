@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductPrice should render correctly the component when price DOES NOT have discount 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="price"
+  >
+    $ 20
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ProductPrice should render correctly the component when price have discount 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="price"
+  >
+    <span
+      class="stripped"
+    >
+      $ 20
+    </span>
+     $ 14
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonProduct should render correctly the component 1`] = `
+<DocumentFragment>
+  <img
+    alt="product"
+    src="Image"
+  />
+  Title
+</DocumentFragment>
+`;

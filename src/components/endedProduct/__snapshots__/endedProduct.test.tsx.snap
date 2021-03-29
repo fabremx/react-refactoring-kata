@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EndedProduct should render correctly the component 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="photoEndedProduct"
+  >
+    <img
+      alt="product"
+      src="Image"
+    />
+    <div>
+      End soon
+    </div>
+  </div>
+  Title 
+  <span>
+    (End Soon)
+  </span>
+</DocumentFragment>
+`;

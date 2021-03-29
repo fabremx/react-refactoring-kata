@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseProduct should render correctly the component 1`] = `
+<DocumentFragment>
+  MockMock ProductPrice
+  <input
+    disabled=""
+    min="0"
+    size="4"
+    step="1"
+    type="number"
+    value="2"
+  />
+  Mock ProductPrice
+  <svg
+    data-testid="remove"
+  >
+    remove.svg
+  </svg>
+</DocumentFragment>
+`;

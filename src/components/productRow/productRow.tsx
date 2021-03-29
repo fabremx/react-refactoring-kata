@@ -18,8 +18,11 @@ interface MappingKeyComponent {
 export function ProductRow({ product, removeProduct }: Props): ReactElement {
   const getProductComponent = (product: Product): ReactElement => {
     const mappingKeyComponent: MappingKeyComponent[] = [
-      { key: "isNew", component: <NewProduct product={product} /> },
-      { key: "isSoonEnding", component: <EndedProduct product={product} /> },
+      { key: "isNew", component: <NewProduct title={product.title} /> },
+      {
+        key: "isSoonEnding",
+        component: <EndedProduct image={product.image} title={product.title} />,
+      },
     ];
 
     const mappedKeyComponent:
@@ -29,7 +32,7 @@ export function ProductRow({ product, removeProduct }: Props): ReactElement {
     );
 
     if (mappedKeyComponent) return mappedKeyComponent.component;
-    return <CommonProduct product={product} />;
+    return <CommonProduct image={product.image} title={product.title} />;
   };
 
   return (
