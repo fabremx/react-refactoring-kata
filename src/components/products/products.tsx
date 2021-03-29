@@ -29,36 +29,42 @@ export function Products({ products, removeProduct }: Props): ReactElement {
               <tr key={product.id}>
                 <td className={styles.photo}>
                   {product.isNew && (
-                    <span>New product (No image available)</span>
+                    <span data-testid="photoNewProduct">
+                      New product (No image available)
+                    </span>
                   )}
 
                   {!product.isNew && product.isSoonEnding && (
-                    <>
-                      <img src={product.image} alt="product" />
+                    <div data-testid="photoEndedProduct">
+                      <img src={product.image} alt="ended product" />
                       <span>End of the product very soon</span>
-                    </>
+                    </div>
                   )}
 
                   {!product.isNew && !product.isSoonEnding && (
-                    <img src={product.image} alt="product" />
+                    <img
+                      src={product.image}
+                      alt="product"
+                      data-testid="photoCommonProduct"
+                    />
                   )}
                 </td>
 
                 <td className={styles.name}>
                   {product.isNew && (
-                    <>
+                    <div data-testid="titleNewProduct">
                       {product.title} <span>(New product)</span>
-                    </>
+                    </div>
                   )}
 
                   {!product.isNew && product.isSoonEnding && (
-                    <>
+                    <div data-testid="titleEndedProduct">
                       {product.title} <span>(End Soon)</span>
-                    </>
+                    </div>
                   )}
 
                   {!product.isNew && !product.isSoonEnding && (
-                    <>{product.title}</>
+                    <div data-testid="titleCommonProduct">{product.title}</div>
                   )}
                 </td>
 
@@ -76,7 +82,7 @@ export function Products({ products, removeProduct }: Props): ReactElement {
                   />
                 </td>
                 <td className={styles.total}>
-                  <>
+                  <div data-testid="price">
                     {product.priceAfterDiscount ? (
                       <div>
                         <span className={styles.stripped}>
@@ -85,19 +91,26 @@ export function Products({ products, removeProduct }: Props): ReactElement {
                         {""} $ {product.priceAfterDiscount * product.quantity}
                       </div>
                     ) : (
-                      product.price * product.quantity
+                      <span>{`$ ${product.price * product.quantity}`}</span>
                     )}
-                  </>
+                  </div>
                 </td>
                 <td className={styles.remove}>
-                  <RemoveIcon onClick={() => removeProduct(product.id)} />
+                  <RemoveIcon
+                    onClick={() => removeProduct(product.id)}
+                    data-testid="remove"
+                  />
                 </td>
               </tr>
             ))}
 
           {products.length === 0 && (
             <tr>
-              <td colSpan={6} className={styles.noProducts}>
+              <td
+                colSpan={6}
+                className={styles.noProducts}
+                data-testid="noProducts"
+              >
                 No products in cart
               </td>
             </tr>

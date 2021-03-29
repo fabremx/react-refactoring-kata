@@ -21,8 +21,10 @@ export function Cart(): ReactElement {
 
   const getCartProducts = async () => {
     const response = await fetch(`http://localhost:3000/api/products.json`);
-    const { products }: { products: Product[] } = await response.json();
-    setProducts(products);
+    const result: { products: Product[] } = await response.json();
+
+    if (!result || !result.products) return;
+    setProducts(result.products);
   };
 
   const removeProduct = (idToRemove: number) => {
@@ -64,8 +66,8 @@ export function Cart(): ReactElement {
 
   return (
     <>
-      {user && products ? (
-        <div className={styles.container}>
+      {user ? (
+        <div className={styles.container} data-testid="cart">
           <Products products={products} removeProduct={removeProduct} />
           <Summary
             products={products}
