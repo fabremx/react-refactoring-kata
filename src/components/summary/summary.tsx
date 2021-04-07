@@ -24,7 +24,7 @@ export function Summary({
       </div>
 
       {products.length > 0 && (
-        <>
+        <div data-testid="discountDetails">
           <hr />
           {user.coupon ? (
             <div className={styles.element}>
@@ -39,7 +39,7 @@ export function Summary({
               {!user.isVIP && <span>$ 3.99</span>}
             </div>
           </div>
-        </>
+        </div>
       )}
       <hr />
 
@@ -51,7 +51,7 @@ export function Summary({
       <hr />
 
       <div className={styles.submit}>
-        {products.length > 0 && <button>Buy</button>}
+        {products.length > 0 && <button data-testid="buyBtn">Buy</button>}
       </div>
     </div>
   );

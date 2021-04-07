@@ -29,15 +29,21 @@ export function Products({ products, removeProduct }: Props): ReactElement {
               <tr key={product.id}>
                 <td className={styles.photo}>
                   {product.isNew && (
-                    <span data-testid="photoNewProduct">
-                      New product (No image available)
-                    </span>
+                    <div
+                      data-testid="photoNewProduct"
+                      className={styles.newProduct}
+                    >
+                      New product
+                    </div>
                   )}
 
                   {!product.isNew && product.isSoonEnding && (
-                    <div data-testid="photoEndedProduct">
+                    <div
+                      data-testid="photoEndedProduct"
+                      className={styles.endedProduct}
+                    >
                       <img src={product.image} alt="ended product" />
-                      <span>End of the product very soon</span>
+                      <div>End of the product very soon</div>
                     </div>
                   )}
 
@@ -52,13 +58,19 @@ export function Products({ products, removeProduct }: Props): ReactElement {
 
                 <td className={styles.name}>
                   {product.isNew && (
-                    <div data-testid="titleNewProduct">
+                    <div
+                      data-testid="titleNewProduct"
+                      className={styles.newProduct}
+                    >
                       {product.title} <span>(New product)</span>
                     </div>
                   )}
 
                   {!product.isNew && product.isSoonEnding && (
-                    <div data-testid="titleEndedProduct">
+                    <div
+                      data-testid="titleEndedProduct"
+                      className={styles.endedProduct}
+                    >
                       {product.title} <span>(End Soon)</span>
                     </div>
                   )}
@@ -68,8 +80,15 @@ export function Products({ products, removeProduct }: Props): ReactElement {
                   )}
                 </td>
 
-                <td className={styles.price}>
-                  <>$ {product.price}</>
+                <td className={styles.price} data-testid="price">
+                  {product.priceAfterDiscount ? (
+                    <div>
+                      <span className={styles.stripped}>$ {product.price}</span>
+                      {""} $ {product.priceAfterDiscount}
+                    </div>
+                  ) : (
+                    <span>$ {product.price}</span>
+                  )}
                 </td>
                 <td className={styles.quantity}>
                   <input
@@ -82,7 +101,7 @@ export function Products({ products, removeProduct }: Props): ReactElement {
                   />
                 </td>
                 <td className={styles.total}>
-                  <div data-testid="price">
+                  <div data-testid="total">
                     {product.priceAfterDiscount ? (
                       <div>
                         <span className={styles.stripped}>
