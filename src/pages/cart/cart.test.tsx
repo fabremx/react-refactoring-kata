@@ -79,30 +79,6 @@ describe("Cart", () => {
       });
     });
 
-    describe("Product Discount", () => {
-      it("should render product row with the correct price into the cells when product have a discount", async () => {
-        // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, [
-          NEW_PRODUCT_WITH_DISCOUNT,
-        ]);
-        // When
-        await renderComponent();
-        // Then
-        expect(getBlock(PRICE_CELL)).toHaveTextContent("$ 10 $ 5");
-        expect(getBlock(TOTAL_PRICE_CELL)).toHaveTextContent("$ 20 $ 10");
-      });
-
-      it("should render product row with the correct price into the cells when product have NOT a discount", async () => {
-        // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, [COMMON_PRODUCT]);
-        // When
-        await renderComponent();
-        // Then
-        expect(getBlock(PRICE_CELL)).toHaveTextContent("$ 10");
-        expect(getBlock(TOTAL_PRICE_CELL)).toHaveTextContent("$ 20");
-      });
-    });
-
     describe("Product Row", () => {
       it("should render product row with 'New Product' image and title cells when products contains a 'New Product'", async () => {
         // Given
@@ -137,6 +113,30 @@ describe("Cart", () => {
         expect(isRendered(COMMON_PRODUCT_ROW)).toBeTruthy();
         expect(isRendered(NEW_PRODUCT_ROW)).toBeFalsy();
         expect(isRendered(ENDED_PRODUCT_ROW)).toBeFalsy();
+      });
+    });
+
+    describe("Product Discount", () => {
+      it("should render product row with the correct price into the cells when product have a discount", async () => {
+        // Given
+        mockRetrivedUserAndProductsWith(MOCKED_USER, [
+          NEW_PRODUCT_WITH_DISCOUNT,
+        ]);
+        // When
+        await renderComponent();
+        // Then
+        expect(getBlock(PRICE_CELL)).toHaveTextContent("$ 10 $ 5");
+        expect(getBlock(TOTAL_PRICE_CELL)).toHaveTextContent("$ 20 $ 10");
+      });
+
+      it("should render product row with the correct price into the cells when product have NOT a discount", async () => {
+        // Given
+        mockRetrivedUserAndProductsWith(MOCKED_USER, [COMMON_PRODUCT]);
+        // When
+        await renderComponent();
+        // Then
+        expect(getBlock(PRICE_CELL)).toHaveTextContent("$ 10");
+        expect(getBlock(TOTAL_PRICE_CELL)).toHaveTextContent("$ 20");
       });
     });
   });

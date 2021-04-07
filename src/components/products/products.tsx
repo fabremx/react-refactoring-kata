@@ -43,7 +43,7 @@ export function Products({ products, removeProduct }: Props): ReactElement {
                       className={styles.endedProduct}
                     >
                       <img src={product.image} alt="ended product" />
-                      <div>End of the product very soon</div>
+                      <div>End soon</div>
                     </div>
                   )}
 

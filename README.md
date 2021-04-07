@@ -54,16 +54,22 @@ An common product is displayed without specific rules
 ![Common Product](public/images/commonProduct.JPG)
 
 ```
-An new product is displayed with no picture and a label next to the product title
+An new product is displayed with a label 'New product' instead of the picture and next to the product title
 ```
 
 ![New Product](public/images/newProduct.JPG)
 
 ```
-An ended product is displayed with an label next to the picture and the product title
+An ended product is displayed with a label 'End soon' next to the picture and the product title
 ```
 
 ![Ended Product](public/images/endedProduct.JPG)
+
+##### Product Discount
+
+```
+- If product have discount then display old price striped and the new price next to it
+```
 
 ### 💲 Summary
 
@@ -102,4 +108,5 @@ Heres the step to calculate the total price:
 ## 👍 Useful commands
 
 > `npm start`: Launch the page
+>
 > `npm test`: Launch the tests
