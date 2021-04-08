@@ -73,6 +73,7 @@ exports[`ProductPrice should render correctly the component when products is emp
           <td
             class="noProducts"
             colspan="6"
+            data-testid="noProducts"
           >
             No products in cart
           </td>

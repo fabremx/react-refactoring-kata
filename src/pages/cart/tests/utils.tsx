@@ -36,8 +36,18 @@ export const getBlock = (key: string): HTMLElement | null => {
   return screen.queryByTestId(key);
 };
 
-export const isRendered = (key: string): boolean =>
-  !!screen.queryByTestId(`photo${key}`) &&
-  !!screen.queryByTestId(`title${key}`);
+export const isRendered = (key: string): boolean => {
+  switch (key) {
+    case COMMON_PRODUCT_ROW:
+    case NEW_PRODUCT_ROW:
+    case ENDED_PRODUCT_ROW:
+      return (
+        !!screen.queryByTestId(`photo${key}`) &&
+        !!screen.queryByTestId(`title${key}`)
+      );
+    default:
+      return !!screen.queryByTestId(key);
+  }
+};
 
 export const getNumberOfRows = () => screen.queryAllByRole("row").length;

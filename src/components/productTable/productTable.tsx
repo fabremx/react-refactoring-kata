@@ -33,7 +33,11 @@ export function ProductTable({ products, updateProduct }: Props): ReactElement {
         <tbody>
           {products.length === 0 && (
             <tr>
-              <td colSpan={6} className={styles.noProducts}>
+              <td
+                colSpan={6}
+                className={styles.noProducts}
+                data-testid="noProducts"
+              >
                 No products in cart
               </td>
             </tr>
