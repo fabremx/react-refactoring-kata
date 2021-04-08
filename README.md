@@ -1,4 +1,4 @@
-# React Refactoring Kataa
+# React Refactoring Kata
 
 ## 🚩 Context
 
