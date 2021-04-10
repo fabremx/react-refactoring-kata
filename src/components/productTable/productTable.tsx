@@ -23,7 +23,6 @@ export function ProductTable({ products, updateProduct }: Props): ReactElement {
           <tr>
             <th>Image</th>
             <th>Product Name</th>
-            <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
             <th>Remove</th>
@@ -31,18 +30,6 @@ export function ProductTable({ products, updateProduct }: Props): ReactElement {
         </thead>
 
         <tbody>
-          {products.length === 0 && (
-            <tr>
-              <td
-                colSpan={6}
-                className={styles.noProducts}
-                data-testid="noProducts"
-              >
-                No products in cart
-              </td>
-            </tr>
-          )}
-
           {products.map((product) => (
             <ProductRow
               product={product}

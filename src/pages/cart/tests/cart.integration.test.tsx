@@ -1,23 +1,26 @@
 import { screen, fireEvent } from "@testing-library/react";
 import {
-  NEW_PRODUCT_WITH_DISCOUNT,
+  NEW_PRODUCT,
   ENDED_PRODUCT,
   COMMON_PRODUCT,
 } from "../../../mocks/products";
-import { MOCKED_USER } from "../../../mocks/user";
 import {
+  MOCKED_USER,
+  USER_NOT_VIP_WITHOUT_COUPON,
+  USER_NOT_VIP_WITH_COUPON,
+  USER_VIP_WITHOUT_COUPON,
+  USER_VIP_WITH_COUPON,
+} from "../../../mocks/user";
+import {
+  CART_PAGE,
   NEW_PRODUCT_ROW,
   ENDED_PRODUCT_ROW,
   COMMON_PRODUCT_ROW,
-  PRICE_CELL,
-  TOTAL_PRICE_CELL,
-  CART_PAGE,
-  NO_PRODUCTS_MESSAGE,
-  DISCOUNT_DETAILS,
-  BUY_BUTTON,
+  TOTAL_BEFORE_DISCOUNT,
+  TOTAL_AFTER_DISCOUNT,
+  getBlock,
   mockRetrivedUserAndProductsWith,
   renderComponent,
-  getBlock,
   getNumberOfRows,
   isRendered,
 } from "./utils";
@@ -33,7 +36,7 @@ describe("Cart", () => {
       expect(isRendered(CART_PAGE)).toBeTruthy();
     });
 
-    it("should NOT render products and summary when user is NOT connected", async () => {
+    it("should render 'Loading...' message when user is NOT connected", async () => {
       // Given
       mockRetrivedUserAndProductsWith(undefined, [COMMON_PRODUCT]);
       // When
@@ -44,25 +47,11 @@ describe("Cart", () => {
   });
 
   describe("Products", () => {
-    describe("Component Display", () => {
-      it("should render 'No products in cart' message when product list is empty", async () => {
-        // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, []);
-        // When
-        await renderComponent();
-        // Then
-        expect(isRendered(NO_PRODUCTS_MESSAGE)).toBeTruthy();
-        expect(getBlock(NO_PRODUCTS_MESSAGE)).toHaveTextContent(
-          "No products in cart"
-        );
-      });
-    });
-
     describe("User Actions", () => {
-      it("should render the correct updated products array when user remove an product", async () => {
+      it("should render remove the product from list when user remove an product", async () => {
         // Given
         mockRetrivedUserAndProductsWith(MOCKED_USER, [
-          NEW_PRODUCT_WITH_DISCOUNT,
+          NEW_PRODUCT,
           COMMON_PRODUCT,
         ]);
         // When
@@ -82,11 +71,9 @@ describe("Cart", () => {
     });
 
     describe("Product Row", () => {
-      it("should render product row with 'New Product' image and title cells when products contains a 'New Product'", async () => {
+      it("should render 'New Product' row when products contains a 'New Product'", async () => {
         // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, [
-          NEW_PRODUCT_WITH_DISCOUNT,
-        ]);
+        mockRetrivedUserAndProductsWith(MOCKED_USER, [NEW_PRODUCT]);
         // When
         await renderComponent();
         // Then
@@ -95,7 +82,7 @@ describe("Cart", () => {
         expect(isRendered(COMMON_PRODUCT_ROW)).toBeFalsy();
       });
 
-      it("should render product row with 'Ended Product' image and title cells when products contains a 'Ended Product'", async () => {
+      it("should render 'Ended Product' row when products contains a 'Ended Product'", async () => {
         // Given
         mockRetrivedUserAndProductsWith(MOCKED_USER, [ENDED_PRODUCT]);
         // When
@@ -106,7 +93,7 @@ describe("Cart", () => {
         expect(isRendered(COMMON_PRODUCT_ROW)).toBeFalsy();
       });
 
-      it("should render product row with 'Common Product' image and title cells when products contains a 'Common Product'", async () => {
+      it("should render 'Common Product' row when products contains a 'Common Product'", async () => {
         // Given
         mockRetrivedUserAndProductsWith(MOCKED_USER, [COMMON_PRODUCT]);
         // When
@@ -117,52 +104,70 @@ describe("Cart", () => {
         expect(isRendered(ENDED_PRODUCT_ROW)).toBeFalsy();
       });
     });
+  });
 
-    describe("Product Discount", () => {
-      it("should render product row with the correct price into the cells when product have a discount", async () => {
+  describe("Summary", () => {
+    describe("Sub Total", () => {
+      it("should handle price before discounts", async () => {
         // Given
         mockRetrivedUserAndProductsWith(MOCKED_USER, [
-          NEW_PRODUCT_WITH_DISCOUNT,
+          COMMON_PRODUCT,
+          ENDED_PRODUCT,
         ]);
         // When
         await renderComponent();
         // Then
-        expect(getBlock(PRICE_CELL)).toHaveTextContent("$ 10 $ 5");
-        expect(getBlock(TOTAL_PRICE_CELL)).toHaveTextContent("$ 20 $ 10");
-      });
-
-      it("should render product row with the correct price into the cells when product have NOT a discount", async () => {
-        // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, [COMMON_PRODUCT]);
-        // When
-        await renderComponent();
-        // Then
-        expect(getBlock(PRICE_CELL)).toHaveTextContent("$ 10");
-        expect(getBlock(TOTAL_PRICE_CELL)).toHaveTextContent("$ 20");
+        expect(getBlock(TOTAL_BEFORE_DISCOUNT)).toHaveTextContent("$ 20");
       });
     });
-  });
 
-  describe("Summary", () => {
-    describe("Component Display", () => {
-      it("should render summary without discounts details and buy button when products cart list is empty", async () => {
+    describe("Total After Discounts", () => {
+      it("should handle price when user is NOT VIP and has NOT coupon", async () => {
         // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, []);
+        mockRetrivedUserAndProductsWith(USER_NOT_VIP_WITHOUT_COUPON, [
+          COMMON_PRODUCT,
+          NEW_PRODUCT,
+        ]);
         // When
         await renderComponent();
         // Then
-        expect(isRendered(DISCOUNT_DETAILS)).toBeFalsy();
-        expect(isRendered(BUY_BUTTON)).toBeFalsy();
+        expect(getBlock(TOTAL_AFTER_DISCOUNT)).toHaveTextContent("$ 23.99");
       });
 
-      it("should render summary with discounts details and buy button when products cart list is NOT empty", async () => {
+      it("should handle price when user is NOT VIP and has coupon", async () => {
         // Given
-        mockRetrivedUserAndProductsWith(MOCKED_USER, [COMMON_PRODUCT]);
+        mockRetrivedUserAndProductsWith(USER_NOT_VIP_WITH_COUPON, [
+          COMMON_PRODUCT,
+          NEW_PRODUCT,
+        ]);
         // When
         await renderComponent();
         // Then
-        expect(isRendered(DISCOUNT_DETAILS)).toBeTruthy();
-        expect(isRendered(BUY_BUTTON)).toBeTruthy();
+        expect(getBlock(TOTAL_AFTER_DISCOUNT)).toHaveTextContent("$ 21.99");
+      });
+
+      it("should handle price when user is VIP and has NOT coupon", async () => {
+        // Given
+        mockRetrivedUserAndProductsWith(USER_VIP_WITHOUT_COUPON, [
+          COMMON_PRODUCT,
+          NEW_PRODUCT,
+        ]);
+        // When
+        await renderComponent();
+        // Then
+        expect(getBlock(TOTAL_AFTER_DISCOUNT)).toHaveTextContent("$ 20.00");
+      });
+
+      it("should handle price when user is VIP and has coupon", async () => {
+        // Given
+        mockRetrivedUserAndProductsWith(USER_VIP_WITH_COUPON, [
+          COMMON_PRODUCT,
+          NEW_PRODUCT,
+        ]);
+        // When
+        await renderComponent();
+        // Then
+        expect(getBlock(TOTAL_AFTER_DISCOUNT)).toHaveTextContent("$ 18.00");
       });
     });
   });

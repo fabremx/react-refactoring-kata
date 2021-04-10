@@ -54,23 +54,24 @@ export function Summary({ products, isUserVIP, coupon }: Props): ReactElement {
         <div data-testid="subTotal">$ {calculTotal(products).toFixed(2)} </div>
       </div>
 
-      <>
-        <hr />
-        {coupon && (
-          <div className={styles.element}>
-            <h4>Coupon Discount</h4>
-            <div>% {coupon}</div>
-          </div>
-        )}
+      <hr />
 
+      {coupon && (
         <div className={styles.element}>
-          <h4>Shipping Cost</h4>
-          <div>
-            {isUserVIP && <span>Free</span>}
-            {!isUserVIP && <span>$ 3.99</span>}
-          </div>
+          <h4>Coupon Discount</h4>
+          <div>% {coupon}</div>
         </div>
-      </>
+      )}
+
+      <div className={styles.element}>
+        <h4>Shipping Cost</h4>
+        <div>
+          {isUserVIP && <span>Free</span>}
+          {!isUserVIP && <span>$ 3.99</span>}
+        </div>
+      </div>
+
+      <hr />
 
       <div className={`${styles.element} ${styles.total}`}>
         <h5>Total</h5>

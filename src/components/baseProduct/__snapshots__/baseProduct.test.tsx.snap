@@ -2,7 +2,7 @@
 
 exports[`BaseProduct should render correctly the component 1`] = `
 <DocumentFragment>
-  MockMock ProductPrice
+  Mock
   <input
     disabled=""
     min="0"
@@ -11,7 +11,7 @@ exports[`BaseProduct should render correctly the component 1`] = `
     type="number"
     value="2"
   />
-  Mock ProductPrice
+  $ 20
   <svg
     data-testid="remove"
   >

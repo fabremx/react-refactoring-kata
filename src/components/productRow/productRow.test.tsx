@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import {
   COMMON_PRODUCT,
   ENDED_PRODUCT,
-  NEW_PRODUCT_WITH_DISCOUNT,
+  NEW_PRODUCT,
 } from "../../mocks/products";
 import { ProductRow } from "./productRow";
 
@@ -21,15 +21,9 @@ describe("ProductRow", () => {
     // Given
     const tableRow = document.createElement("tbody");
     // When
-    render(
-      <ProductRow
-        product={NEW_PRODUCT_WITH_DISCOUNT}
-        removeProduct={jest.fn()}
-      />,
-      {
-        container: document.body.appendChild(tableRow),
-      }
-    );
+    render(<ProductRow product={NEW_PRODUCT} removeProduct={jest.fn()} />, {
+      container: document.body.appendChild(tableRow),
+    });
     // Then
     expect(screen.getByTestId("newProduct")).toBeInTheDocument();
   });

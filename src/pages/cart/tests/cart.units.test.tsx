@@ -11,7 +11,7 @@ jest.mock("../../../components/summary", () => ({
 }));
 
 describe("Cart", () => {
-  it("should render component when user is not defined", async () => {
+  it("should render Loading message when user is not defined", async () => {
     // Given
     mockRetrivedUserAndProductsWith(undefined, [COMMON_PRODUCT]);
     // When

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductPrice should render correctly the component when products is NOT empty 1`] = `
+exports[`ProductTable should render correctly the component 1`] = `
 <DocumentFragment>
   <div
     class="cart"
@@ -13,9 +13,6 @@ exports[`ProductPrice should render correctly the component when products is NOT
           </th>
           <th>
             Product Name
-          </th>
-          <th>
-            Price
           </th>
           <th>
             Quantity
@@ -32,50 +29,6 @@ exports[`ProductPrice should render correctly the component when products is NOT
         <tr>
           <td>
             Product Mock
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`ProductPrice should render correctly the component when products is empty 1`] = `
-<DocumentFragment>
-  <div
-    class="cart"
-  >
-    <table>
-      <thead>
-        <tr>
-          <th>
-            Image
-          </th>
-          <th>
-            Product Name
-          </th>
-          <th>
-            Price
-          </th>
-          <th>
-            Quantity
-          </th>
-          <th>
-            Total
-          </th>
-          <th>
-            Remove
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            class="noProducts"
-            colspan="6"
-            data-testid="noProducts"
-          >
-            No products in cart
           </td>
         </tr>
       </tbody>

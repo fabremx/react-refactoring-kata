@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Cart should render Loading message when user is not defined 1`] = `
+<DocumentFragment>
+  <div>
+    Loading ...
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Cart should render component when user is defined 1`] = `
 <DocumentFragment>
   <div
@@ -7,14 +15,6 @@ exports[`Cart should render component when user is defined 1`] = `
     data-testid="cart"
   >
     Mock ProductTableMock Summary
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Cart should render component when user is not defined 1`] = `
-<DocumentFragment>
-  <div>
-    Loading ...
   </div>
 </DocumentFragment>
 `;

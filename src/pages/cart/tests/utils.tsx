@@ -2,15 +2,17 @@ import { render, waitFor, screen } from "@testing-library/react";
 import { Product, User } from "../../../models";
 import { Cart } from "../cart";
 
+export const CART_PAGE = "cart";
+
+// data-id for Products components
 export const NEW_PRODUCT_ROW = "NewProduct";
 export const ENDED_PRODUCT_ROW = "EndedProduct";
 export const COMMON_PRODUCT_ROW = "CommonProduct";
-export const CART_PAGE = "cart";
 export const PRICE_CELL = "price";
-export const TOTAL_PRICE_CELL = "total";
-export const NO_PRODUCTS_MESSAGE = "noProducts";
-export const DISCOUNT_DETAILS = "discountDetails";
-export const BUY_BUTTON = "buyBtn";
+
+// data-id for Summary component
+export const TOTAL_BEFORE_DISCOUNT = "subTotal";
+export const TOTAL_AFTER_DISCOUNT = "total";
 
 const response = (result: any) => ({
   json: () => result,

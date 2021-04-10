@@ -14,30 +14,44 @@ exports[`Summary should render correctly the component when products is empty 1`
       <h4>
         Sub Total
       </h4>
-      <div>
+      <div
+        data-testid="subTotal"
+      >
         $ 0.00 
       </div>
     </div>
     <hr />
+    0
+    <div
+      class="element"
+    >
+      <h4>
+        Shipping Cost
+      </h4>
+      <div>
+        <span>
+          $ 3.99
+        </span>
+      </div>
+    </div>
+    <hr />
     <div
       class="element total"
     >
       <h5>
         Total
       </h5>
-      <div>
-        $ 0.00
+      <div
+        data-testid="total"
+      >
+        $ 3.99
       </div>
     </div>
-    <hr />
-    <div
-      class="submit"
-    />
   </div>
 </DocumentFragment>
 `;
 
-exports[`Summary should render correctly the component when user has coupon 1`] = `
+exports[`Summary should render correctly the component when user is NOT VIP and hos NOT coupon 1`] = `
 <DocumentFragment>
   <div
     class="summary"
@@ -51,35 +65,24 @@ exports[`Summary should render correctly the component when user has coupon 1`] 
       <h4>
         Sub Total
       </h4>
-      <div>
-        $ 25.00 
+      <div
+        data-testid="subTotal"
+      >
+        $ 30.00 
       </div>
     </div>
+    <hr />
+    0
     <div
-      data-testid="discountDetails"
+      class="element"
     >
-      <hr />
-      <div
-        class="element"
-      >
-        <h4>
-          Coupon Discount
-        </h4>
-        <div>
-          % 10
-        </div>
-      </div>
-      <div
-        class="element"
-      >
-        <h4>
-          Shipping Cost
-        </h4>
-        <div>
-          <span>
-            $ 3.99
-          </span>
-        </div>
+      <h4>
+        Shipping Cost
+      </h4>
+      <div>
+        <span>
+          $ 3.99
+        </span>
       </div>
     </div>
     <hr />
@@ -89,25 +92,17 @@ exports[`Summary should render correctly the component when user has coupon 1`] 
       <h5>
         Total
       </h5>
-      <div>
-        $ 26.49
-      </div>
-    </div>
-    <hr />
-    <div
-      class="submit"
-    >
-      <button
-        data-testid="buyBtn"
+      <div
+        data-testid="total"
       >
-        Buy
-      </button>
+        $ 33.99
+      </div>
     </div>
   </div>
 </DocumentFragment>
 `;
 
-exports[`Summary should render correctly the component when user is NOT VIP 1`] = `
+exports[`Summary should render correctly the component when user is VIP and has coupon 1`] = `
 <DocumentFragment>
   <div
     class="summary"
@@ -121,87 +116,33 @@ exports[`Summary should render correctly the component when user is NOT VIP 1`] 
       <h4>
         Sub Total
       </h4>
-      <div>
-        $ 25.00 
-      </div>
-    </div>
-    <div
-      data-testid="discountDetails"
-    >
-      <hr />
-      0
       <div
-        class="element"
+        data-testid="subTotal"
       >
-        <h4>
-          Shipping Cost
-        </h4>
-        <div>
-          <span>
-            $ 3.99
-          </span>
-        </div>
+        $ 30.00 
       </div>
     </div>
     <hr />
-    <div
-      class="element total"
-    >
-      <h5>
-        Total
-      </h5>
-      <div>
-        $ 28.99
-      </div>
-    </div>
-    <hr />
-    <div
-      class="submit"
-    >
-      <button
-        data-testid="buyBtn"
-      >
-        Buy
-      </button>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Summary should render correctly the component when user is VIP 1`] = `
-<DocumentFragment>
-  <div
-    class="summary"
-  >
-    <h3>
-      Order summary
-    </h3>
     <div
       class="element"
     >
       <h4>
-        Sub Total
+        Coupon Discount
       </h4>
       <div>
-        $ 25.00 
+        % 10
       </div>
     </div>
     <div
-      data-testid="discountDetails"
+      class="element"
     >
-      <hr />
-      0
-      <div
-        class="element"
-      >
-        <h4>
-          Shipping Cost
-        </h4>
-        <div>
-          <span>
-            Free
-          </span>
-        </div>
+      <h4>
+        Shipping Cost
+      </h4>
+      <div>
+        <span>
+          Free
+        </span>
       </div>
     </div>
     <hr />
@@ -211,19 +152,11 @@ exports[`Summary should render correctly the component when user is VIP 1`] = `
       <h5>
         Total
       </h5>
-      <div>
-        $ 25.00
-      </div>
-    </div>
-    <hr />
-    <div
-      class="submit"
-    >
-      <button
-        data-testid="buyBtn"
+      <div
+        data-testid="total"
       >
-        Buy
-      </button>
+        $ 27.00
+      </div>
     </div>
   </div>
 </DocumentFragment>

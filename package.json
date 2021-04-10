@@ -36,7 +36,8 @@
       "!src/models/*",
       "!src/react-app-env.d.ts",
       "!src/**/index.{ts,tsx}",
-      "!src/pages/**/*utils.tsx"
+      "!src/pages/**/*utils.tsx",
+      "!src/api/*"
     ]
   },
   "browserslist": {
