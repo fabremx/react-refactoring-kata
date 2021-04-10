@@ -4,11 +4,10 @@ const BASE_PRODUCT = {
   price: 10,
   description: "description 1",
   image: "image 1",
-  type: "type",
-  category: "category",
   quantity: 2,
   stock: 10,
 };
+
 export const NEW_PRODUCT_WITH_DISCOUNT: Product = {
   ...BASE_PRODUCT,
   id: 1,
