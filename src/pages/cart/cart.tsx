@@ -22,8 +22,6 @@ export function Cart(): ReactElement {
   const getCartProducts = async () => {
     const response = await fetch(`http://localhost:3000/api/products.json`);
     const result: { products: Product[] } = await response.json();
-
-    if (!result || !result.products) return;
     setProducts(result.products);
   };
 
@@ -40,12 +38,7 @@ export function Cart(): ReactElement {
   const calculTotal = (): number => {
     let price: number = 0;
     for (let i: number = 0; i < products.length; i++) {
-      let addition = products[i].price;
-      const priceAfterDiscount = products[i].priceAfterDiscount;
-      if (priceAfterDiscount) {
-        addition = priceAfterDiscount;
-      }
-      price += addition;
+      price += products[i].price;
     }
     return price;
   };
@@ -66,17 +59,17 @@ export function Cart(): ReactElement {
 
   return (
     <>
-      {user ? (
+      {!user && <>Loading...</>}
+      {user && (
         <div className={styles.container} data-testid="cart">
           <Products products={products} removeProduct={removeProduct} />
           <Summary
-            products={products}
             user={user}
             calculTotalAfterDiscount={calculTotalAfterDiscount}
             calculTotal={calculTotal}
           />
         </div>
-      ) : null}
+      )}
     </>
   );
 }

@@ -2,10 +2,6 @@
   "id": 123,
   "firstname": "Jean",
   "lastname": "Martin",
-  "address": "10 Rue de la république",
-  "creditCardNumber": "357691504880233",
-  "creditCardExpiration": "04/12/2024",
-  "creditCardCVV": "548",
   "isVIP": true,
   "coupon": 10
 }

@@ -14,20 +14,12 @@ Heres the list of the business logics implemented:
 
 ```
 - If user is connected then display cart page
-- If user is NOT connected then do NOT display cart page
+- If user is NOT connected then do display "Loading..." message
 ```
 
 ### 🧾 Products list
 
 The products list display the cart products list of the user.
-
-##### Component Display
-
-```
-- If product list is empty then display a row with message "No products in cart"
-```
-
-![Empty Cart](public/images/emptyCart.JPG)
 
 ##### User Actions
 
@@ -37,7 +29,7 @@ The products list display the cart products list of the user.
 
 ##### Product Row
 
-There are 3 different type of products (In our page the products list contains the 3 differents type).
+There are 3 different type of products.
 
 Each row contains :
 
@@ -65,28 +57,11 @@ An ended product is displayed with a label 'End soon' next to the picture and th
 
 ![Ended Product](public/images/endedProduct.JPG)
 
-##### Product Discount
-
-```
-- If product have discount then display old price striped and the new price next to it
-```
-
 ### 💲 Summary
 
 The summary display the total price of the cart with the details of discounts and of other advantages.
 
-##### Component Display
-
-```
-- If product list is empty then do NOT display discounts details and button 'buy'
-- If product list is NOT empty then display discounts details and button 'buy'
-```
-
 ##### Total Price Calculation
-
-```
-- If user have no product(s) then total price is equal to $0
-```
 
 Heres the step to calculate the total price:
 

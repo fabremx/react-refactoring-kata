@@ -2,32 +2,47 @@ import { render, waitFor, screen } from "@testing-library/react";
 import { Product, User } from "../../models";
 import { Cart } from "./cart";
 
-export const MOCKED_USER: User = {
+const BASE_USER = {
   id: 1,
   firstname: "firstname",
   lastname: "lastname",
-  address: "address",
-  creditCardNumber: "creditCardNumber",
-  creditCardExpiration: "creditCardExpiration",
-  creditCardCVV: "creditCardCVV",
+};
+export const MOCKED_USER = {
+  ...BASE_USER,
+  isVIP: false,
+  coupon: 0,
+};
+export const USER_VIP_WITH_COUPON: User = {
+  ...BASE_USER,
+  isVIP: true,
+  coupon: 10,
+};
+export const USER_VIP_WITHOUT_COUPON: User = {
+  ...BASE_USER,
+  isVIP: true,
+  coupon: 0,
+};
+
+export const USER_NOT_VIP_WITH_COUPON: User = {
+  ...BASE_USER,
   isVIP: false,
   coupon: 10,
+};
+export const USER_NOT_VIP_WITHOUT_COUPON: User = {
+  ...BASE_USER,
+  isVIP: false,
+  coupon: 0,
 };
 
 const BASE_PRODUCT = {
   price: 10,
-  description: "description 1",
   image: "image 1",
-  type: "type",
-  category: "category",
   quantity: 2,
-  stock: 10,
 };
-export const NEW_PRODUCT_WITH_DISCOUNT: Product = {
+export const NEW_PRODUCT: Product = {
   ...BASE_PRODUCT,
   id: 1,
   title: "New Product",
-  priceAfterDiscount: 5,
   isNew: true,
   isSoonEnding: false,
 };
@@ -40,21 +55,23 @@ export const ENDED_PRODUCT: Product = {
 };
 export const COMMON_PRODUCT: Product = {
   ...BASE_PRODUCT,
-  id: 2,
+  id: 3,
   title: "Common Product",
   isNew: false,
   isSoonEnding: false,
 };
 
 export const CART_PAGE = "cart";
+
+// data-id for Products component
 export const NEW_PRODUCT_ROW = "NewProduct";
 export const ENDED_PRODUCT_ROW = "EndedProduct";
 export const COMMON_PRODUCT_ROW = "CommonProduct";
 export const PRICE_CELL = "price";
-export const TOTAL_PRICE_CELL = "total";
-export const NO_PRODUCTS_MESSAGE = "noProducts";
-export const DISCOUNT_DETAILS = "discountDetails";
-export const BUY_BUTTON = "buyBtn";
+
+// data-id for Summary component
+export const TOTAL_BEFORE_DISCOUNT = "subTotal";
+export const TOTAL_AFTER_DISCOUNT = "total";
 
 const response = (result: any) => ({
   json: () => result,
