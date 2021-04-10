@@ -14,7 +14,7 @@ Heres the list of the business logics implemented:
 
 ```
 - If user is connected then display cart page
-- If user is NOT connected then do display "Loading..." message
+- If user is NOT connected then display "Loading..." message
 ```
 
 ### 🧾 Products list
@@ -35,9 +35,9 @@ Each row contains :
 
 - A picture
 - The product name
-- The price for one product
-- the quantity
-- the total price
+- The quantity
+- The total price
+- A button to delete the product
 
 ```
 An common product is displayed without specific rules
