@@ -1,6 +1,6 @@
 {
-  "name": "react-kata-refacto",
-  "version": "0.1.0",
+  "name": "react-refactoring-kata",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",

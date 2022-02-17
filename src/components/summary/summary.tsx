@@ -1,49 +1,41 @@
 import { ReactElement } from "react";
-import { User } from "../../models";
-import styles from "./summary.module.scss";
+import "../../assets/styles/styles.scss";
 
 interface Props {
-  user: User;
-  calculTotal: () => number;
-  calculTotalAfterDiscount: () => number;
+  shouldPayFees: boolean;
+  calculTotalPrice: () => number;
+  calculAmountToPay: () => number;
 }
 export function Summary({
-  user,
-  calculTotal,
-  calculTotalAfterDiscount,
+  shouldPayFees,
+  calculTotalPrice,
+  calculAmountToPay,
 }: Props): ReactElement {
   return (
-    <div className={styles.summary}>
+    <div className="summary">
       <h3>Order summary</h3>
 
-      <div className={styles.element}>
-        <h4>Sub Total</h4>
-        <div data-testid="subTotal">$ {calculTotal().toFixed(2)}</div>
+      <div className="summary__element">
+        <h4>Total Price</h4>
+        <div className="summary__value" data-testid="totalPrice">
+          $ {calculTotalPrice().toFixed(2)}
+        </div>
       </div>
 
-      <div>
-        <hr />
-        {user.coupon ? (
-          <div className={styles.element}>
-            <h4>Coupon Discount</h4>
-            <div>% {user.coupon}</div>
-          </div>
-        ) : null}
-
-        <div className={styles.element}>
-          <h4>Shipping Cost</h4>
-          <div>
-            {user.isVIP && <span>Free</span>}
-            {!user.isVIP && <span>$ 3.99</span>}
-          </div>
+      <div className="summary__element">
+        <h4>Total Fees</h4>
+        <div className="summary__value" data-testid="totalFees">
+          {shouldPayFees ? '$ 3.99' : 'Free'}
         </div>
       </div>
 
       <hr />
 
-      <div className={`${styles.element} ${styles.total}`}>
-        <h5>Total</h5>
-        <div data-testid="total">$ {calculTotalAfterDiscount().toFixed(2)}</div>
+      <div className="summary__element">
+        <h5>Amount To Pay</h5>
+        <div className="summary__value summary__value--large" data-testid="amountToPay">
+          $ {calculAmountToPay().toFixed(2)}
+        </div>
       </div>
     </div>
   );

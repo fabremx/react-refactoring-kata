@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { ReactComponent as RemoveIcon } from "../../assets/images/remove.svg";
 import { Product } from "../../models";
-import styles from "./products.module.scss";
+import "../../assets/styles/styles.scss";
 
 interface Props {
   products: Product[];
@@ -10,9 +10,9 @@ interface Props {
 
 export function Products({ products, removeProduct }: Props): ReactElement {
   return (
-    <div className={styles.cart}>
-      <table>
-        <thead>
+    <div className="products">
+      <table className="products__table">
+        <thead className="products__header">
           <tr>
             <th>Image</th>
             <th>Product Name</th>
@@ -22,63 +22,47 @@ export function Products({ products, removeProduct }: Props): ReactElement {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="products__body">
           {products.map((product) => (
-            <tr key={product.id}>
-              <td className={styles.photo}>
-                {product.isNew && (
-                  <div
-                    data-testid="photoNewProduct"
-                    className={styles.newProduct}
-                  >
+            <tr className="product" key={product.id}>
+              <td className="product__image">
+                {product.isNew &&
+                  <div className="product__label product__label--green">
                     New product
                   </div>
-                )}
+                }
 
-                {!product.isNew && product.isSoonEnding && (
-                  <div
-                    data-testid="photoEndedProduct"
-                    className={styles.endedProduct}
-                  >
+                {!product.isNew && product.isSoonEnding &&
+                  <>
                     <img src={product.image} alt="ended product" />
-                    <div>End soon</div>
-                  </div>
-                )}
+                    <div className="product__label product__label--orange">End soon</div>
+                  </>
+                }
 
-                {!product.isNew && !product.isSoonEnding && (
-                  <img
-                    src={product.image}
-                    alt="product"
-                    data-testid="photoCommonProduct"
-                  />
-                )}
+                {!product.isNew && !product.isSoonEnding &&
+                  <img src={product.image} alt="product" />
+                }
               </td>
 
-              <td className={styles.name}>
-                {product.isNew && (
-                  <div
-                    data-testid="titleNewProduct"
-                    className={styles.newProduct}
-                  >
-                    {product.title} <span>(New product)</span>
-                  </div>
-                )}
+              <td className="product__name">
+                {product.isNew &&
+                  <>
+                    {product.title} <span className="product__name--green">(New product)</span>
+                  </>
+                }
 
-                {!product.isNew && product.isSoonEnding && (
-                  <div
-                    data-testid="titleEndedProduct"
-                    className={styles.endedProduct}
-                  >
-                    {product.title} <span>(End Soon)</span>
-                  </div>
-                )}
+                {!product.isNew && product.isSoonEnding &&
+                  <>
+                    {product.title} <span className="product__name--orange">(End Soon)</span>
+                  </>
+                }
 
-                {!product.isNew && !product.isSoonEnding && (
-                  <div data-testid="titleCommonProduct">{product.title}</div>
-                )}
+                {!product.isNew && !product.isSoonEnding &&
+                  <>{product.title}</>
+                }
               </td>
 
-              <td className={styles.quantity}>
+              <td className="product__quantity">
                 <input
                   type="number"
                   size={4}
@@ -89,14 +73,14 @@ export function Products({ products, removeProduct }: Props): ReactElement {
                 />
               </td>
 
-              <td className={styles.total} data-testid="price">
+              <td className="product__total">
                 ${product.price * product.quantity}
               </td>
 
-              <td className={styles.remove}>
+              <td className="product__delete">
                 <RemoveIcon
                   onClick={() => removeProduct(product.id)}
-                  data-testid="remove"
+                  data-testid="removeButton"
                 />
               </td>
             </tr>

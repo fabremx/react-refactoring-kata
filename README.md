@@ -13,21 +13,23 @@ Heres the list of the business logics implemented:
 ### 🛒 Cart Page
 
 ```
-- If user is connected then display cart page
-- If user is NOT connected then display "Loading..." message
+- If there are no products then display "No Products..."
+- If there are products then display products table and price summary
 ```
 
-### 🧾 Products list
+### 🧾 Products table
 
-The products list display the cart products list of the user.
+The products table display the cart products list of the user.
 
-##### User Actions
+**User Actions**
 
 ```
 - User can delete product of the products list
 ```
 
-##### Product Row
+When a user delete a product it delete all quantities of the concerned product
+
+**Product Row**
 
 There are 3 different type of products.
 
@@ -59,20 +61,29 @@ An ended product is displayed with a label 'End soon' next to the picture and th
 
 ### 💲 Summary
 
-The summary display the total price of the cart with the details of discounts and of other advantages.
+The summary display
 
-##### Total Price Calculation
+1. Total price of the cart
+2. Delivery fees
+3. Total amount to pay.
 
-Heres the step to calculate the total price:
+**Total price**
 
 ```
-1. Calculate the total price with quantities
-2. Apply "coupon" discount percentage
-    - If user have coupon then apply coupon percentage
-    - If user have NOT coupon then do notihng
-3. Apply delivery fees
-    - If user is VIP delivery fees is free
-    - If user is NOT VIP add delivery fees ($3.99)
+Calculate all the cart's products price multiplicated by their quantities
+```
+
+**Delivery fees**
+
+```
+- If user should pay fees then add delivery fees ($3.99) to total price
+- If user should not pay fees then add nothing to the total price
+```
+
+**Total amount to pay**
+
+```
+Amount to pay = total price + delivery fees
 ```
 
 ## ✔️ Acceptance Criteria
